@@ -2,6 +2,25 @@
 
 using namespace std;
 
+class Coche{
+    public:
+        int kilometraje;
+        int litros;
+        int lXKm ;
+        int maxTanque;
+
+        Coche(int lXKm, int maxTanque){
+            // Estas variables existen solo a nivel clase/objeto
+            kilometraje = 0;
+            litros = 0;
+            // Como estas variables existen dentro del ambito local(funcion) y a nivel clase/objeto
+            // es necesario indicar cual es la variable de clase utilizando el puntero this
+            this->lXKm = lXKm;
+            this->maxTanque = maxTanque;
+            // al ser this un puntero se puede realizar lo siguiente
+            // (*this).maxTanque = maxTanque;
+        }
+};
 
 int main(){
     int litros = 10;
