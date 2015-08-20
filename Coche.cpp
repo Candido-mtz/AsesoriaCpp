@@ -49,7 +49,17 @@ class Coche{
                 return false;
             litros = maxTanque;
         }
+
+        friend ostream& operator<< (ostream &o, Coche &c);
 };
+
+ostream& operator<< (ostream &o, Coche &c){
+    o << "(L= " << c.litros; 
+    o << ";kilometraje= " << c.kilometraje ;
+    o << ";" << (c.encendido?"Encendido":"Apagado") ;
+    o << ")";
+    return o;
+}
 
 int main(){
     int litros = 10;
