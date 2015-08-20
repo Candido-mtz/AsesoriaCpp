@@ -8,17 +8,46 @@ class Coche{
         int litros;
         int lXKm ;
         int maxTanque;
+        bool encendido;
 
         Coche(int lXKm, int maxTanque){
             // Estas variables existen solo a nivel clase/objeto
             kilometraje = 0;
             litros = 0;
+            encendido = false;
             // Como estas variables existen dentro del ambito local(funcion) y a nivel clase/objeto
             // es necesario indicar cual es la variable de clase utilizando el puntero this
             this->lXKm = lXKm;
             this->maxTanque = maxTanque;
             // al ser this un puntero se puede realizar lo siguiente
             // (*this).maxTanque = maxTanque;
+        }
+        bool encender(){ // this function returns true when success
+            if( !encendido ){
+                if (litros > 0){
+                    encendido = true;
+                    return true;
+                }
+            }
+            return false;
+        }
+        void apagar(){
+            encendido = false;
+        }
+        bool avanzar(int kilometros){
+            if (!encendido)
+                return false;
+            if (litros >= kilometros * lXKm ){
+                litros -= kilometros * lXKm;
+                kilometraje += kilometros;
+                return true;
+            }
+            return false;
+        }
+        bool llenarTanque(){
+            if(encendido)
+                return false;
+            litros = maxTanque;
         }
 };
 
