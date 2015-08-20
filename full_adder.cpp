@@ -20,6 +20,11 @@ void full_add(bool *A ,bool *B,bool C,bool *CO,bool *S,int size){
         ci = *CO;
     }
 }
+void desplega(bool *array, int size){
+    for ( int i=size-1;i>=0;i--){
+        cout << array[i] << "";
+    }
+}
 
 int main(){
     bool a,b,ci,co,s;
@@ -38,4 +43,10 @@ int main(){
     bool co2;
 
     full_add(op1,op2,ci2,&co2,suma,4);
+    desplega(op1,4);
+    cout << "+" ;
+    desplega(op2,4);
+    cout << "= " << co2<<",";
+    desplega(suma,4);
+    cout << endl;
 }
