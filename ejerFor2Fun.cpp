@@ -6,31 +6,35 @@ int main(){
     int vector[3];
     // Pidiendo valores
     cout << "Dame los valores del vector" << endl;
-    cout << "Dame el valor 1" << endl;
-    cin >> vector[0];
-    cout << "Dame el valor 2" << endl;
-    cin >> vector[1];
-    cout << "Dame el valor 3" << endl;
-    cin >> vector[2];
+    for (int i=0; i<3 ;i++){
+        cout << "Dame el valor " << (i+1) << endl;
+        cin >> vector[i];
+    }
 
     // mostrado el vector
     cout << "[" ;
-    cout << vector[0] ;
-    cout << "," << vector[1]; 
-    cout << "," << vector[2];
+    for (int i=0; i<3 ;i++){
+        if (i != 0)
+            cout << "," ;
+        cout << vector[i]; 
+    }
     cout << "]" << endl;
 
     // calculando valores
-    vector[0] = vector[0] * vector[0];
-    vector[1] = vector[1] * vector[1];
-    vector[2] = vector[2] * vector[2];
+    for (int i=0; i<3 ;i++){
+        vector[i] = vector[i] * vector[i];
+    }
 
     // mostrando el resultado
     cout << "[" ;
-    cout << vector[0] ;
-    cout << "," << vector[1]; 
-    cout << "," << vector[2];
+    for (int i=0; i<3 ;i++){
+        if (i != 0)
+            cout << "," ;
+        cout << vector[i]; 
+    }
     cout << "]" << endl;
+
+    return 0;
 
 }
 
