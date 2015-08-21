@@ -52,6 +52,13 @@ class Coche{
             return true;
         }
 
+        int getLitros(){
+            return litros;
+        }
+        void setLitros(int l){
+            litros = l;
+        }
+
         friend ostream& operator<< (ostream &o, Coche &c);
 };
 
@@ -65,12 +72,13 @@ ostream& operator<< (ostream &o, Coche &c){
 
 
 int main(){
-    Coche c= Coche(1, 30);
+    Coche *c= new Coche(1, 30);
     // Coche c(1, 30); // Esto es lo mismo que arriba
     int opcion;
 
     while(true){
-        cout << c << endl;
+        
+        cout << *c << endl;
         cout << " Elije la opcion " << endl;
         cout << "1: Avanzar" << endl;
         cout << "2: Llenar tanque" << endl;
@@ -82,18 +90,19 @@ int main(){
             case 1:
                 cout << "Dame cuantos kilometros " << endl;
                 cin >> opcion;
-                c.avanzar(opcion);
+                (*c).avanzar(opcion);
                 break;
             case 2:
-                c.llenarTanque();
+                c->llenarTanque();
                 break;
             case 3:
-                c.encender();
+                c->encender();
                 break;
             case 4:
-                c.apagar();
+                c->apagar();
                 break;
         }
     }
+    delete c;
     return 0;
 }
