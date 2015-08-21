@@ -15,8 +15,9 @@ class Coche{
             kilometraje = 0;
             litros = 0;
             encendido = false;
-            // Como estas variables existen dentro del ambito local(funcion) y a nivel clase/objeto
-            // es necesario indicar cual es la variable de clase utilizando el puntero this
+            // Como estas variables existen dentro del ambito local(funcion) 
+            // y a nivel clase/objeto es necesario indicar cual es la 
+            // variable de clase utilizando el puntero this
             this->lXKm = lXKm;
             this->maxTanque = maxTanque;
             // al ser this un puntero se puede realizar lo siguiente
@@ -48,6 +49,7 @@ class Coche{
             if(encendido)
                 return false;
             litros = maxTanque;
+            return true;
         }
 
         friend ostream& operator<< (ostream &o, Coche &c);
@@ -61,17 +63,14 @@ ostream& operator<< (ostream &o, Coche &c){
     return o;
 }
 
-int main(){
-    int litros = 10;
-    int lXKm = 1;
-    int kilometraje= 0;
-    int maxTanque = 20;
 
-    bool encendido = false;
+int main(){
+    Coche c= Coche(1, 30);
+    // Coche c(1, 30); // Esto es lo mismo que arriba
     int opcion;
 
     while(true){
-        cout << "EDO-> l:" << litros << " kms:" << kilometraje << " enc:" << encendido << endl;
+        cout << c << endl;
         cout << " Elije la opcion " << endl;
         cout << "1: Avanzar" << endl;
         cout << "2: Llenar tanque" << endl;
@@ -83,23 +82,16 @@ int main(){
             case 1:
                 cout << "Dame cuantos kilometros " << endl;
                 cin >> opcion;
-                kilometraje += opcion;
-                litros -= opcion * lXKm;
+                c.avanzar(opcion);
                 break;
             case 2:
-                litros = maxTanque;
+                c.llenarTanque();
                 break;
             case 3:
-                if( encendido)
-                    cout << "Error, ya esta encendido" << endl;
-                else
-                    encendido = true;
+                c.encender();
                 break;
             case 4:
-                if ( encendido)
-                    encendido = false;
-                else
-                    cout << "Ya esta apagado" << endl;
+                c.apagar();
                 break;
         }
     }
